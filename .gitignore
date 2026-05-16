@@ -1,0 +1,29 @@
+# Model weights
+*.pth
+*.pt
+*.pkl
+work_dirs/
+
+# Dataset
+*.jpg
+*.jpeg
+*.png
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+:Zone.Identifier
