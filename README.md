@@ -22,54 +22,9 @@
 ---
 
 ## Architecture
+<img width="2008" height="646" alt="image" src="https://github.com/user-attachments/assets/ac919686-16d3-478b-bf77-181ee90e2053" />
 
-```
-                        Input Image (512 × 512)
-                               │
-                               ▼
-╔══════════════════════════════════════════════════════════════════════╗
-║                  CBAM-Enhanced MixVisionTransformer Encoder          ║
-║                                                                      ║
-║  Stage 1: PatchEmbed(k=7, s=4) ──► Transformer Blocks ──► CBAM      ║
-║           └──────────────────────────────────────────────────────►  F₁  (H/4,  32ch)
-║                                                                      ║
-║  Stage 2: OverlapPatchMerge(k=3, s=2) ──► Transformer Blocks ──► CBAM
-║           └──────────────────────────────────────────────────────►  F₂  (H/8,  64ch)
-║                                                                      ║
-║  Stage 3: OverlapPatchMerge(k=3, s=2) ──► Transformer Blocks ──► CBAM
-║           └──────────────────────────────────────────────────────►  F₃  (H/16, 160ch)
-║                                                                      ║
-║  Stage 4: OverlapPatchMerge(k=3, s=2) ──► Transformer Blocks ──► CBAM
-║           └──────────────────────────────────────────────────────►  F₄  (H/32, 256ch)
-╚══════════════════════════════════════════════════════════════════════╝
-                               │
-                    Concat {F₁, F₂, F₃, F₄}
-                    Bilinear Upsample → Unified Scale
-                               │
-                               ▼
-╔══════════════════════════════════════════════════════════════════════╗
-║              CBAM-Integrated Hamburger Decoder Head                  ║
-║                                                                      ║
-║   [F₁ ‖ F₂ ‖ F₃ ‖ F₄]                                              ║
-║         │                                                            ║
-║         ▼                                                            ║
-║      CBAM₁  ──► Channel Attention (MLP, r=16)                       ║
-║               ──► Spatial Attention (Conv7×7)                        ║
-║         │                                                            ║
-║         ▼                                                            ║
-║    Hamburger Module  (Global context via matrix decomposition)       ║
-║         │                                                            ║
-║         ▼                                                            ║
-║      CBAM₂  ──► Channel Attention + Spatial Attention               ║
-║         │                                                            ║
-║         ▼                                                            ║
-║   Classification Head  (1×1 Conv → N classes)                       ║
-╚══════════════════════════════════════════════════════════════════════╝
-                               │
-                               ▼
-              Segmentation Map  (5 weapon classes)
-         [Handgun | Rifle | Knife | Revolver | Human]
-```
+
 
 **CBAM Attention** — applied uniformly across all stages (r=16, k=7):
 
