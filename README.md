@@ -8,9 +8,6 @@
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![MMSegmentation](https://img.shields.io/badge/Framework-MMSegmentation-green.svg)](https://github.com/open-mmlab/mmsegmentation)
 
-**Akhila Kambhatla¹\*  ·  Taminul Islam¹  ·  Khaled R Ahmed¹**
-
-*¹ Corresponding Author*
 
 [📄 Paper (arXiv)](https://arxiv.org/abs/2510.16854) · [📄 Paper (IEEE)](https://ieeexplore.ieee.org/document/11402089) · [📊 Results](#results) · [🚀 Quick Start](#quick-start)
 
