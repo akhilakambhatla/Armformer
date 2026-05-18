@@ -41,8 +41,8 @@
 ArmFormer introduces a CBAM-enhanced MixVisionTransformer backbone paired with a dual-CBAM hamburger decoder for pixel-precise weapon segmentation in security-critical scenarios. The architecture achieves **80.64% mIoU** at **82.26 FPS** with only **3.66M parameters and 4.886G FLOPs** — making it deployable on edge devices like surveillance drones and embedded AI accelerators. It outperforms all compared baselines including heavyweight models with up to 48× more computation, while maintaining superior per-class segmentation across all five weapon categories. The model was trained on a custom 8,097-image dataset annotated semi-automatically using SAM2 and sourced from Google Open Images and IMFDB.
 
 ---
-
 ## Results
+<img width="2002" height="636" alt="image" src="https://github.com/user-attachments/assets/1947b8e9-7f9d-45b8-943a-92795f5414fa" />
 
 ### Overall Performance Comparison
 
